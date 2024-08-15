@@ -1,6 +1,6 @@
 namespace: ansilab
 name: keepass
-version: 1.0.1
+version: 1.0.2
 authors:
 - Jan-Piet Mens <jp@mens.de> (https://jpmens.net)
 description: >

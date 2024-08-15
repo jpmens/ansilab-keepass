@@ -72,13 +72,17 @@ options:
     type: str
     default: root-group
   title:
-    description: Title (name) of entry
+    description: Title (name) of the entry
+    required: true
+    type: str
+  user:
+    description: User name of the entry
     required: true
     type: str
   secret:
     description: >
       Password for entry. A random C(secrets.token_urlsafe(32)) value is
-      used if none is specified here.
+      generated and used if this parameter is omitted
     required: false
     type: str
     default: random secret
@@ -132,7 +136,38 @@ EXAMPLES = r"""
        eiusmod tempor incididunt ut labore et dolore magna aliqua.
 """
 
-RETURN = r""" # """
+RETURN = r"""
+database:
+ description: the used O(database) name
+ type: str
+ returned: always
+ sample: "ansible.kdbx"
+title:
+ description: the O(title) of the created / removed entry
+ type: str
+ returned: always
+ sample: "www13"
+entrypath:
+ description: the specified O(entrypath) of the entry
+ type: str
+ returned: always
+ sample: "/Frankfurt/South/Webservers"
+new_secret:
+ description: when O(secret) is not set, this contains the newly-generated secret
+ type: str
+ returned: sometimes
+ sample: "8hQ8S0-IW-dsVUND30klUsWAGOVoJBwLv1zQUxDFCFM"
+tags:
+ description: the given O(tags) of the entry
+ type: list
+ returned: always
+ sample: [ "servers", "pull" ]
+user:
+ description: the given O(user) name of the entry
+ type: str
+ returned: always
+ sample: "root"
+"""
 
 
 def main():
@@ -212,6 +247,7 @@ def main():
     
     if secret is None:
         secret = secrets.token_urlsafe(32)
+        result["new_secret"] = secret           # report the generated secret
 
     if state == "present":
         try:
