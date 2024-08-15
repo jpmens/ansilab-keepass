@@ -1,0 +1,8 @@
+_*
+env.v3/
+jp.yml
+*.gz
+ansible.cfg
+inventory
+*.kdbx
+*.key*

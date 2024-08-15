@@ -1,0 +1,43 @@
+namespace: ansilab
+name: keepass
+version: 1.0.1
+authors:
+- Jan-Piet Mens <jp@mens.de> (https://jpmens.net)
+description: >
+  This collection contains a plugin with which KeePassXC entries can be added / removed
+  from databases. Databases can also be created
+license:
+- GPL-2.0-or-later
+tags: [ ansilab, keepass, keepassxc, key, keyx ]
+dependencies: {}
+repository: https://github.com/jpmens/ansilab-keepass
+# documentation: https://github.com/jpmens/ansilab-keepass/README.md
+readme: README.md
+homepage: https://github.com/jpmens/ansilab-keepass
+issues: https://github.com/jpmens/ansilab-keepass/issues
+
+# A list of file glob-like patterns used to filter any files or directories that should not be included in the build
+# artifact. A pattern is matched from the relative path of the file or directory of the collection directory. This
+# uses 'fnmatch' to match the files or directories. Some directories and files like 'galaxy.yml', '*.pyc', '*.retry',
+# and '.git' are always filtered. Mutually exclusive with 'manifest'
+build_ignore: 
+  - ".gitignore"
+  - "*.sh"
+  - "env.v3"
+  - "ansible.cfg"
+  - "plugins/README.md"
+  - "keepass.yml"
+  - "jp.yml"
+  - "assets"
+  - "_*"
+  - "*.kdbx"
+  - "*.key*"
+  - "requirements.txt"
+
+# A dict controlling use of manifest directives used in building the collection artifact. The key 'directives' is a
+# list of MANIFEST.in style
+# L(directives,https://packaging.python.org/en/latest/guides/using-manifest-in/#manifest-in-commands). The key
+# 'omit_default_directives' is a boolean that controls whether the default directives are used. Mutually exclusive
+# with 'build_ignore'
+# manifest: null
+
